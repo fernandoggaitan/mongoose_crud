@@ -1,0 +1,29 @@
+﻿extends ../layout
+block content
+  h1 Personajes
+  p
+    a(href="/personajes/create") Crear nuevo personaje
+  -if(personajes.length > 0)
+    table
+      thead
+        tr
+          th Nombre
+          th Apellido
+          th
+          th
+          th
+      tbody
+        -each item in personajes
+          tr
+            td #{item.nombre}
+            td #{item.apellido}
+            td 
+              a(href="/personajes/#{item._id}") Ver
+            td 
+              a(href="/personajes/#{item._id}/edit") Editar
+            td
+              form(method="post", action="/personajes/#{item._id}")
+                input(type="hidden", name="_method", value="DELETE")
+                a(href="javascript:void(0);", onclick="if(confirm('¿Está seguro que desea eliminar este registro?')){this.parentNode.submit();}") Eliminar
+  -else
+    p No existen personajes creados

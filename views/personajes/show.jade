@@ -1,0 +1,6 @@
+﻿extends ../layout
+block content
+  h1 #{personaje.nombre} #{personaje.apellido}
+  div(style='white-space:pre;') #{personaje.biografia}
+  br
+  a(href="/personajes") Volver atrás
